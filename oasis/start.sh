@@ -1,0 +1,1 @@
+nohup java -jar /var/lib/jenkins/workspace/OASIS/target/OASIS-1.0-SNAPSHOT.jar >1.txt &

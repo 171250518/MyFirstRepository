@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>OASIS-结构详情页面</title>
+    <meta name="keywords" content="DeathGhost,DeathGhost.cn,web前端设,移动WebApp开发" />
+    <meta name="description" content="DeathGhost.cn::H5 WEB前端设计开发!" />
+    <meta name="author" content="DeathGhost"/>
+    <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../js/public.js"></script>
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jqpublic.js"></script>
+    <script type="text/javascript" src="../../js/echarts.js"></script>
+    <script type="text/javascript" src="../../js/request.js"></script>
+    <script type="text/javascript" src="../../js/affiliationDetail.js"></script>
+
+    <!--
+    Author: DeathGhost
+    Author URI: http://www.deathghost.cn
+    -->
+    <script>
+        $(function(){
+            $('.title-list li').click(function(){
+                var liindex = $('.title-list li').index(this);
+                $(this).addClass('on').siblings().removeClass('on');
+                $('.menutab-wrap div.menutab').eq(liindex).fadeIn(150).siblings('div.menutab').hide();
+                var liWidth = $('.title-list li').width();
+                $('.shopcontent .title-list p').stop(false,true).animate({'left' : liindex * liWidth + 'px'},300);
+            });
+
+            $('.menutab-wrap .menutab li').hover(function(){
+                $(this).css("border-color","#ff6600");
+                $(this).find('p > a').css('color','#ff6600');
+            },function(){
+                $(this).css("border-color","#fafafa");
+                $(this).find('p > a').css('color','#666666');
+            });
+        });
+    </script>
+</head>
+<body>
+<header>
+    <section class="Topmenubg">
+        <div class="Topnav">
+            <div class="LeftNav">
+                <a href="../Account/register.html">注册</a>/<a href="../Account/login.html">登录</a>
+            </div>
+            <div class="RightNav">
+                <a href="../Account/user_center.html">用户中心</a> <a href="../Account/user_favorites.html" target="_blank" title="我的收藏">我的收藏</a>
+            </div>
+        </div>
+    </section>
+    <div class="Logo_search">
+        <div class="Logo">
+            <span class="current" style="font-size: 20px;font-family:楷体" ><b>学术论文查询系统</b></span>
+            <span>南京市 [ <a href="#" style="color:#01699F; ">XX区</a> ]</span>
+        </div>
+    </div>
+    <div class="menu_bg">
+        <ul class="menu">
+            <li><a href="../Index/index.html">首页</a></li>
+            <li><a href="../Account/user_center.html">我的主页</a></li>
+            <li><a href="../Paper/data_collect.html">数据收集</a></li>
+            <li><a href="../SearchResult/article_list.html">论文检索</a></li>
+        </ul>
+    </div>
+</header>
+<!--Start content-->
+<section class="slp">
+    <aside class="food-hd">
+        <div class="foodpic">
+            <img src="../../upload/jg2.jpg" id="showimg">
+            <!--<ul class="smallpic">
+             <li><img src="../../upload/02.jpg" onmouseover="show(this)" onmouseout="hide()"></li>
+            </ul>-->
+        </div>
+        <form class="foodtext">
+            <div class="foodname_a">
+                <h1 id="affiliationName"></h1>
+                <p id="authors"></p>
+            </div>
+            <div class="price_a">
+                <p class="price01" style="font-size: 20px">ResearchDirection Of Affiliation：<p id="researchDirection"></p></p>
+
+            </div>
+            <div class="Freight">
+
+            </div>
+            <ul class="Tran_infor">
+                <li>
+                    <p class="Numerical" id="papersNumber"></p>
+                    <p>Papers</p>
+                </li>
+                <li class="line">
+                    <p class="Numerical" id="citationNumber"></p>
+                    <p>Citations</p>
+                </li>
+                <li class="line">
+                    <p class="Numerical" id="rankNumber"></p>
+                    <p>rank</p>
+                </li>
+            </ul>
+            <form action="cart.html">
+                <div class="BuyNo">
+
+                    <div class="Buybutton">
+                        <input name="" type="submit" value="关注(正在开发中）" class="BuyB" href=#>
+                    </div>
+                </div>
+            </form>
+        </form>
+    </aside>
+    <aside class="food-hd1">
+        <div style="float: left;">
+            <div id="paper-year-chart" style="width: 500px;height:300px;display: inline"></div>
+        </div>
+        <div style="float: right">
+            <div id="citation-year-chart" style="width: 500px;height:300px;display: inline"></div>
+        </div>
+    </aside>
+    <aside class="food-hd1">
+        <div style="float: left;">
+            <div id="re-rank-chart" style="width: 500px;height:300px;display: inline"></div>
+        </div>
+    </aside>
+    <!--bottom content-->
+    <section class="Bcontent">
+        <article>
+            <div class="shopcontent">
+                <div class="title2 cf">
+                    <ul class="title-list fr cf ">
+                        <li class="on">全部论文</li>
+
+                        <li>
+                            <select  id="PaperYear" style="height:30px;width:100px;border-radius: 10px;background-color: transparent;font-family: '微软雅黑';outline: none;font-weight: bold;border-width: 2px">
+                                <option value="20">全部年份</option>
+                                <option value="2013">2013</option>
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select  id="PaperAuthor" class="AuthorSelection" style="height:30px;width:100px;border-radius: 10px;background-color: transparent;font-family: '微软雅黑';outline: none;font-weight: bold;border-width: 2px">
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menutab-wrap">
+                    <!--case1-->
+                    <div class="menutab show">
+                        <div class="Articlelist Overflow">
+                            <ul class="affPaper-on-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <!--case2-->
+                    <div class="menutab">
+                        <div class="Articlelist Overflow">
+                            <table class="Dcomment">
+                                <tr>
+                                    <td>
+                                        <ul class="affYearPaper-on-list">
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="TurnPage">
+                                <a href="#">
+                                    <span class="Prev"><i></i>首页</span>
+                                </a>
+                                <a href="#"><span class="PNumber">1</span></a>
+                                <a href="#"><span class="PNumber">2</span></a>
+                                <a href="#">
+                                    <span class="Next">最后一页<i></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--case3-->
+                    <div class="menutab">
+                        <div class="Articlelist Overflow">
+
+                            <table width="888">
+                                <tr height="40">
+                                    <td>
+                                        <ul class="affAuthorPaper-on-list">
+                                        </ul>
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="TurnPage">
+                            <a href="#">
+                                <span class="Prev"><i></i>首页</span>
+                            </a>
+                            <a href="#"><span class="PNumber">1</span></a>
+                            <a href="#"><span class="PNumber">2</span></a>
+                            <a href="#">
+                                <span class="Next">最后一页<i></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+    <a href="https://www.ieee.org/" target="_blank" title="IEEE">IEEE</a>
+    <a href="https://www.acemap.info/" target="_blank" title="IEEE">ACEMAP</a>
+    <a href="http://www.iase-web.org/" target="_blank" title="IEEE">IASE</a>
+    <a href="http://liinwww.ira.uka.de/bibliography/Misc/DBLP/" target="_blank" title="IEEE">DBLP</a>
+</div>
+<footer>
+    <section class="Otherlink">
+        <aside>
+            <div class="ewm-left">
+                <p>NJUSE2017</p>
+            </div>
+            <div class="tips">
+                <p>网站公告</p>
+            </div>
+        </aside>
+        <section>
+            <!--<div>
+            <span><i class="i1"></i>配送支付</span>
+            <ul>
+             <li><a href="data_collect.html" target="_blank" title="标题">支付方式</a></li>
+             <li><a href="data_collect.html" target="_blank" title="标题">配送方式</a></li>
+             <li><a href="data_collect.html" target="_blank" title="标题">配送效率</a></li>
+             <li><a href="data_collect.html" target="_blank" title="标题">服务费用</a></li>
+            </ul>
+            </div>-->
+            <div>
+                <span><i class="i2"></i>关于我们</span>
+                <!--<ul>
+                 <li><a href="data_collect.html" target="_blank" title="标题">招贤纳士</a></li>
+                 <li><a href="data_collect.html" target="_blank" title="标题">网站介绍</a></li>
+                 <li><a href="data_collect.html" target="_blank" title="标题">配送效率</a></li>
+                 <li><a href="data_collect.html" target="_blank" title="标题">商家加盟</a></li>
+                </ul>-->
+            </div>
+            <div>
+                <span><i class="i3"></i>帮助中心</span>
+                <!--<ul>
+                 <li><a href="data_collect.html" target="_blank" title="标题">服务内容</a></li>
+                 <li><a href="data_collect.html" target="_blank" title="标题">服务介绍</a></li>
+                 <li><a href="data_collect.html" target="_blank" title="标题">常见问题</a></li>
+                 <li><a href="data_collect.html" target="_blank" title="标题">网站地图</a></li>
+                </ul>-->
+            </div>
+        </section>
+    </section>
+    <div class="copyright">© 版权所有 2020 xxx 技术支持：<a href=# title="XXXX">XXXXX</a></div>
+</footer>
+</body>
+</html>

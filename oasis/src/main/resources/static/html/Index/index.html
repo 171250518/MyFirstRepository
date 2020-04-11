@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>OASIS-首页</title>
+<meta name="keywords" content="DeathGhost,DeathGhost.cn,web前端设,移动WebApp开发" />
+<meta name="description" content="DeathGhost.cn::H5 WEB前端设计开发!" />
+<meta name="author" content="DeathGhost"/>
+<link href="../../css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../js/public.js"></script>
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jqpublic.js"></script>
+    <script type="text/javascript" src="../../js/request.js"></script>
+    <script type="text/javascript" src="../../js/article_list.js"></script>
+    <script type="text/javascript" src="../../js/index.js"></script>
+
+    <!--<script>
+    function goToAuthor() {
+        window.location.href='../Author/authorDetail.html?name='+"123";
+    }
+</script>-->
+</head>
+
+<body>
+<header>
+ <section class="Topmenubg">
+  <div class="Topnav">
+   <div class="LeftNav">
+    <a href="../Account/register.html">注册</a>/<a href="../Account/login.html">登录</a>
+   </div>
+   <div class="RightNav">
+    <a href="../Account/user_center.html">用户中心</a> <a href="../Account/user_favorites.html" target="_blank" title="我的收藏">我的收藏</a>
+   </div>
+  </div>
+ </section>
+    <div class="Logo_search">
+        <div class="Logo">
+            <span class="current" style="font-size: 20px;font-family:楷体" ><b>学术论文查询系统</b></span>
+            <span>南京市 [ <a href="#" style="color:#01699F; ">XX区</a> ]</span>
+        </div>
+     <div class="Search">
+         <div class="Search_nav" id="selectsearch">
+             <a href="javascript:;" onClick="selectsearch(this,'author')" class="choose">学者</a>
+             <a href="javascript:;" onClick="selectsearch(this,'publisher')">机构名称</a>
+             <a href="javascript:;" onClick="selectsearch(this,'keywords')">研究方向</a>
+             <a href="javascript:;" onClick="selectsearch(this,'conference')">发布会议</a>
+         </div>
+         <div class="Search_area">
+             <input type="search" id="search-inputAuthor" placeholder="请输入您想搜索的学者，机构，会议，研究方向" class="searchbox" />
+         </div>
+     </div>
+ </div>
+ <div class="menu_bg">
+  <ul class="menu">
+   <li><a href=#>首页</a></li>
+      <li><a href="../Account/user_center.html">我的主页</a></li>
+   <li><a href="../Paper/data_collect.html">数据采集</a></li>
+   <li><a href="../SearchResult/article_list.html">论文检索</a></li>
+  </ul>
+ </div>
+</header>
+<!--Start content-->
+ <!--<p align="center" class="p1 FontW Font14" >暂无内容</p>-->
+
+<section class="Cfn">
+ <aside class="N-right">
+     <div class="N-title">热门学者 <i>TOP AUTHORS</i></div>
+     <ul class="Newslist topAuthor-on-list" id="UpRoll3">
+       <!--  <li><i></i><button onclick="goToAuthor()" target="_blank" title="这里调用论文标题..."class="button1">xxxxxxx123xx</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..."class="button1">aaaaaaaaa</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..."class="button1">bbbbbbbbb</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..." class="button1">ccccccccc</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..." class="button1">ddddddddd</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..." class="button1">xxxxxxxx</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..." class="button1">ccccccccc</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..." class="button1">ddddddddd</button></li>
+         <li><i></i><button href="../Author/authorDetail.html" target="_blank" title="这里调用论文标题..." class="button1">xxxxxxxx</button></li>
+         <li><i></i><button onclick="goToAuthor()" target="_blank" title="这里调用论文标题..."class="button1">eeeeeeeeee</button></li>-->
+     </ul>
+     <!--<script>
+     var UpRoll3 = document.getElementById('UpRoll3');
+     var lis3 = UpRoll3.getElementsByTagName('li');
+     var ml3 = 0;
+     var timer1 = setInterval(function(){
+         var liHeight3 = lis3[0].offsetHeight;
+         var timer2 = setInterval(function(){
+             UpRoll3.scrollTop = (++ml3);
+             if(ml3 ==1){
+                 clearInterval(timer2);
+                 UpRoll3.scrollTop = 0;
+                 ml3 = 0;
+                 lis3[0].parentNode.appendChild(lis3[0]);
+             }
+         },10);
+     },5000);
+ </script>-->
+
+  <!--<div class="S-time">xxxxxx</div>
+  <div class="C-time">
+   <img src="../../upload/dc.jpg"/>
+  </div>
+  <a href="../Paper/interest_list.html" target="_blank"><img src="../../images/by_button.png"></a>
+  <a href="../Paper/interest_list.html" target="_blank"><img src="../../images/dc_button.png"></a>-->
+ </aside>
+ <!--<div class="F-middle">
+ <ul class="rslides f426x240">
+        <li><a href="javascript:"><img src="../../upload/01.jpg"/></a></li>
+        <li><a href="javascript:"><img src="../../upload/02.jpg" /></a></li>
+        <li><a href="javascript:"><img src="../../upload/03.jpg"/></a></li>
+    </ul>
+ </div>-->
+    <aside class="N-right">
+        <div class="N-title">热门机构 <i>TOP AFFILIATIONS</i></div>
+        <ul class="Newslist topAffiliation-on-list" id="UpRoll2" >
+        </ul>
+       <!-- <script>
+            var UpRoll2 = document.getElementById('UpRoll2');
+            var lis2 = UpRoll2.getElementsByTagName('li');
+            var ml2 = 0;
+            var timer1 = setInterval(function(){
+                var liHeight2 = lis2[0].offsetHeight;
+                var timer2 = setInterval(function(){
+                    UpRoll2.scrollTop = (++ml2);
+                    if(ml2 ==1){
+                        clearInterval(timer2);
+                        UpRoll2.scrollTop = 0;
+                        ml2 = 0;
+                        lis2[0].parentNode.appendChild(lis2[0]);
+                    }
+                },10);
+            },5000);
+        </script>-->
+        <!--<div class="S-time">xxxxxx</div>
+        <div class="C-time">
+         <img src="../../upload/dc.jpg"/>
+        </div>
+        <a href="../Paper/interest_list.html" target="_blank"><img src="../../images/by_button.png"></a>
+        <a href="../Paper/interest_list.html" target="_blank"><img src="../../images/dc_button.png"></a>-->
+    </aside>
+    <aside class="N-right">
+        <div class="N-title">热门会议 <i>TOP CONF</i></div>
+        <ul class="Newslist topConf-on-list" id="UpRoll1">
+        </ul>
+       <!-- <script>
+            var UpRoll1 = document.getElementById('UpRoll1');
+            var lis1 = UpRoll1.getElementsByTagName('li');
+            var ml1 = 0;
+            var timer1 = setInterval(function(){
+                var liHeight = lis1[0].offsetHeight;
+                var timer2 = setInterval(function(){
+                    UpRoll1.scrollTop = (++ml1);
+                    if(ml1 ==1){
+                        clearInterval(timer2);
+                        UpRoll1.scrollTop = 0;
+                        ml1 = 0;
+                        lis1[0].parentNode.appendChild(lis1[0]);
+                    }
+                },10);
+            },5000);
+        </script>-->
+    </aside>
+ <aside class="N-right">
+  <div class="N-title"> 热门研究方向<i>HOT PAPERS</i></div>
+  <ul class="Newslist topReDirection-on-list" id="UpRoll" >
+  </ul>
+<!--  <script>
+   var UpRoll = document.getElementById('UpRoll');
+   var lis = UpRoll.getElementsByTagName('li');
+   var ml = 0;
+   var timer1 = setInterval(function(){
+    var liHeight = lis[0].offsetHeight;
+    var timer2 = setInterval(function(){
+     UpRoll.scrollTop = (++ml);
+     if(ml ==1){
+        clearInterval(timer2);
+        UpRoll.scrollTop = 0;
+        ml = 0;
+        lis[0].parentNode.appendChild(lis[0]);
+    }
+    },10);
+    },5000);
+  </script>-->
+ </aside>
+</section>
+<section class="Sfainfor">
+ <article class="Sflist">
+  <div id="Indexouter">
+   <ul id="Indextab">
+    <li class="current">著名学者</li>
+    <li>著名机构</li>
+    <p class="class_B">
+    <a href="#">国内</a>
+    <a href="#">国外</a>
+    <span><a href="#" target="_blank">more ></a></span>
+    </p>
+   </ul>
+  <div id="Indexcontent">
+   <ul style="display:block;">
+    <li>
+     <div class="SCcontent">
+     <a href="authorDetail.html" target="_blank" title="名称">
+      <figure>
+       <img src="../../upload/05.jpg">
+       <figcaption>
+       <span class="title">xxx学者</span>
+       <span class="price"><i>xxx</i></span>
+       </figcaption>
+      </figure>
+      </a>
+     <a href="authorDetail.html" target="_blank" title="名称">
+      <figure>
+       <img src="../../upload/04.jpg">
+       <figcaption>
+       <span class="title">xxxxx</span>
+       <span class="price"><i>xxxx</i></span>
+       </figcaption>
+      </figure>
+      </a>
+     <a href="authorDetail.html" target="_blank" title="名称">
+      <figure>
+       <img src="../../upload/06.jpg">
+       <figcaption>
+       <span class="title">xxxxx</span>
+       <span class="price"><i>xxxx</i></span>
+       </figcaption>
+      </figure>
+      </a>
+     </div>
+    </li>
+   </ul>
+   <ul>
+  <li>
+
+     <div class="SCcontent">
+       <a href="shop.html" target="_blank" title="TITLE">
+           <figure>
+               <img src="../../upload/04.jpg">
+               <figcaption>
+                   <span class="title">xxxxx</span>
+               </figcaption>
+           </figure>
+      </a>
+       <a href="shop.html" target="_blank" title="TITLE">
+       <figure>
+       <img src="../../upload/cc.jpg">
+       <figcaption>
+       <span class="title">xxx机构</span>
+       </figcaption>
+       <!--<p class="p1"><q>简介</q></p>-->
+
+       </figure>
+      </a>
+       <a href="shop.html" target="_blank" title="TITLE">
+       <figure>
+       <img src="../../upload/ee.jpg">
+       <figcaption>
+       <span class="title">xxx机构</span>
+       </figcaption>
+       <!--<p class="p1"><q>简介</q></p>-->
+
+       </figure>
+      </a>
+     </div>
+  </li>
+  </ul>
+ </div>
+ </div>
+ </article>
+ <aside class="A-infor">
+    <div class="usercomment">
+   <span>用户评论</span>
+   <ul>
+    <li>
+     <img src="../../upload/01.jpg">
+     用户“123”：xxxx
+    </li>
+    <li>
+     <img src="../../upload/02.jpg">
+     用户“456”：aaaaa
+    </li>
+   </ul>
+  </div>
+ </aside>
+</section>
+<!--End content-->
+<div class="F-link">
+  <span>友情链接：</span>
+  <a href="https://www.ieee.org/" target="_blank" title="IEEE">IEEE</a>
+  <a href="https://www.acemap.info/" target="_blank" title="IEEE">ACEMAP</a>
+  <a href="http://www.iase-web.org/" target="_blank" title="IEEE">IASE</a>
+  <a href="http://liinwww.ira.uka.de/bibliography/Misc/DBLP/" target="_blank" title="IEEE">DBLP</a>
+ </div>
+<footer>
+ <section class="Otherlink">
+  <aside>
+   <div class="ewm-left">
+    <p>NJUSE2017</p>
+   </div>
+   <div class="tips">
+    <p>网站公告</p>
+   </div>
+  </aside>
+  <section>
+
+    <div>
+    <span><i class="i2"></i>关于我们</span>
+
+    </div>
+    <div>
+    <span><i class="i3"></i>帮助中心</span>
+
+    </div>
+  </section>
+ </section>
+<div class="copyright">© 版权所有 2020 xxx 技术支持：<a href=# title="XXXX">XXXXX</a></div>
+</footer>
+</body>
+</html>

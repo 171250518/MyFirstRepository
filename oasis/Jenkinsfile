@@ -1,0 +1,40 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('pull code') {
+         steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '923ef4b4-a7d4-440e-b13c-80d5b71be76d', url: 'http://212.129.149.40/171250519_NONAME/oasis.git']]])
+         }
+      }
+      stage('build project') {
+         steps {
+            sh label: '', script: 'mvn clean package '
+            }
+      }
+      stage('jacoco') {
+               steps {
+                  sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent'
+                  jacoco()
+               }
+            }
+
+      stage('publish project') {
+         steps {
+            sh label: '', script: '''
+            process_id=$(ps -ef | grep OASIS-1.0-SNAPSHOT | grep -v "grep" | awk \'{print $2}\')
+
+            if [[ ! -z "$process_id" ]]
+            then
+               echo "停止服务"
+               kill -9 $process_id
+            else
+               echo "服务未启动"
+             fi
+
+            JENKINS_NODE_COOKIE=dontKillMe sh start.sh
+            '''
+         }
+      }
+   }
+}
