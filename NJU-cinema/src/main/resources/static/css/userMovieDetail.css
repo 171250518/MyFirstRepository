@@ -1,0 +1,22 @@
+.table-wrapper {
+    padding: 20px;
+}
+
+.table-wrapper .table b {
+    color: #3a5795;
+    font-size: 20px;
+}
+
+.table-wrapper .table td{
+    height: 60px;
+    vertical-align: middle;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #dddddd;
+}
+.nav {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}

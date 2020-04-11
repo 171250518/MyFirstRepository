@@ -1,0 +1,26 @@
+.content-header {
+    display: flex;
+}
+
+.order-basic-info {
+    flex: 1;
+    padding: 0 20px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.order-operations {
+    margin-top: auto;
+}
+
+#movie-img {
+    height: 140px;
+    width: 110px;
+}
+
+.seesion-container {
+    margin-top: 30px;
+    background-color: whitesmoke;
+}

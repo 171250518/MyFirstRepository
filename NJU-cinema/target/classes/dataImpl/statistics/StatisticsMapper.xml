@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nju.edu.cinemaSystem.data.statistics.StatisticsMapper">
+    <select id="selectMovieScheduleTimes" resultType="nju.edu.cinemaSystem.po.MovieScheduleTime">
+        select movie_id as movieId, count(*) as time,name from
+              (select * from schedule where start_time between #{date} and #{nextDate}) s,
+              movie where s.movie_id = movie.id group by movieId
+    </select>
+
+    <select id="selectMovieTotalBoxOffice" resultType="nju.edu.cinemaSystem.po.MovieTotalBoxOffice">
+        select movie.id as movieId, boxOffice,name from movie
+        left join
+          (select movie_id as movieId,sum(fare) as boxOffice from schedule
+          right join
+          (select schedule_id from ticket where state = 1) t
+          on schedule.id = t.schedule_id group by movie_id) s
+        on s.movieId = movie.id
+        order by boxOffice desc
+    </select>
+
+    <select id="selectPopularMovie" resultMap="MovieTotalBoxOffice">
+        select * from(
+        select movie.id as movieId, boxOffice,name, poster_url as posterUrl from movie
+        left join
+          (select movie_id as movieId,sum(fare) as boxOffice from schedule
+          right join
+          (select schedule_id from ticket where state = 1 and time>#{requireDate}) t
+          on schedule.id = t.schedule_id group by movie_id) s
+        on s.movieId = movie.id
+        order by boxOffice desc) r limit 0,#{movieNum}
+    </select>
+
+    <select id="selectAudiencePrice" resultType="nju.edu.cinemaSystem.po.AudiencePrice">
+        select user_id as userId, sum(fare) as totalPrice from schedule right join
+              (select * from ticket where schedule_id in
+              (select id from schedule where start_time between #{date} and #{nextDate}) and state = 1) t
+        on schedule.id = schedule_id group by user_id
+    </select>
+
+    <select id="getPlacingRate" resultType="nju.edu.cinemaSystem.po.MoviePlacingRate">
+        select d.name as movieName, sum(d.num) as numOfAudience, count(d.name) as numOfSchedule from
+            (select movie.name,b.start_time,b.num
+            from
+            (select movie_id,start_time,count(start_time) as num from
+                (select s.movie_id,s.start_time,t.id
+                from schedule s
+                left join ticket t
+                on s.id=t.schedule_id
+                where t.state=1 and (s.start_time between #{date} and #{nextDate})
+                ) a
+                group by start_time
+            ) b
+            inner join movie
+            on movie.id=b.movie_id
+            order by num desc) d
+        group by movieName
+        order by numOfAudience
+    </select>
+
+    <resultMap id="MovieTotalBoxOffice" type="nju.edu.cinemaSystem.po.MovieTotalBoxOffice">
+        <result property="movieId" column="movieId"></result>
+        <result property="boxOffice" column="boxOffice"></result>
+        <result property="name" column="name"></result>
+        <result property="posterUrl" column="posterUrl"></result>
+    </resultMap>
+
+</mapper>

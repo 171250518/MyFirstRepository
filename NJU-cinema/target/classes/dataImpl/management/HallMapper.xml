@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nju.edu.cinemaSystem.data.management.HallMapper">
+    <insert id="insertHall" parameterType="nju.edu.cinemaSystem.po.Hall"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into hall(hallname, hallrow, hallcolumn)
+        values(#{name}, #{row},#{column})
+    </insert>
+
+
+    <update id="updateHall" parameterType="nju.edu.cinemaSystem.po.Hall">
+        update hall set hallname= #{name}, hallrow = #{row},hallcolumn = #{column} where id = #{id}
+    </update>
+    <select id="selectAllHall" resultMap="Hall">
+        select * from hall
+    </select>
+    <select id="selectHallById" resultMap="Hall">
+        select * from hall where id = #{hallId}
+    </select>
+
+    <delete id="deleteHall">
+        delete from hall where id=#{id}
+    </delete>
+
+
+
+    <resultMap id="Hall" type="nju.edu.cinemaSystem.po.Hall">
+        <result column="id" property="id"></result>
+        <result column="hallname" property="name"></result>
+        <result column="hallrow" property="row"></result>
+        <result column="hallcolumn" property="column"></result>
+    </resultMap>
+
+</mapper>

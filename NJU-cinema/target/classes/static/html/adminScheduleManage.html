@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>排片管理</title>
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/index.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link rel="stylesheet" href="/css/menu.css"/>
+    <link rel="stylesheet" href="/css/adminSchedule.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Custom Theme files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="My Show Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--webfont-->
+    <link href='#css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='#css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- start menu -->
+    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="/js/megamenu.js"></script>
+    <script>$(document).ready(function () {
+        $(".megamenu").megamenu();
+    });</script>
+    <script type="text/javascript" src="/js/jquery.leanModal.min.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+    <script src="/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="/js/move-top.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+            });
+        });
+    </script>
+    <!---- start-smoth-scrolling---->
+    <script src="/js/request.js"></script>
+    <script src="/js/adminScheduleManage.js"></script>
+</head>
+<body>
+<!-- header-section-starts -->
+<div class="header-top-strip" id="home">
+    <div class="container">
+        <div class="header-top-right">
+            <!-- Button trigger modal  -->
+            <script>
+                $(document).ready(function () {
+                    $('.popup-with-zoom-anim').magnificPopup({
+                        type: 'inline',
+                        fixedContentPos: false,
+                        fixedBgPos: true,
+                        overflowY: 'auto',
+                        closeBtnInside: true,
+                        preloader: false,
+                        midClick: true,
+                        removalDelay: 300,
+                        mainClass: 'my-mfp-zoom-in'
+                    });
+
+                });
+            </script>
+            <!-- Large modal -->
+            <img class="avatar" id="portrait" src="/images/icon1.png" style="height: 28px; width: 28px;">
+            <button class="btn btn-primary" id="login-head" data-toggle="modal" data-target="#myModal">登录</button>
+            <button class="btn btn-primary" id="logout-head">登出</button>
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" id="modal-container">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">登录您的账号</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Login" data-toggle="tab">登录</a></li>
+                                <li><a href="#Registration" data-toggle="tab">注册</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="Login">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="user-name-input" class="col-sm-2 control-label">用户名</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="user-name-input" placeholder="请输入您的用户名"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" class="col-sm-2 control-label">密码</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入您的密码"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <button type="submit" class="btn btn-primary btn-sm" id="login-btn">登录</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane" id="Registration">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="user-name-input-register" class="col-sm-2 control-label">用户名</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="user-name-input-register" placeholder="请输入用户名"/>
+                                                <p id="signUp-name-error" class="notice" style="color: darkred; visibility: hidden">用户名长度应在4-10位内</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="col-sm-2 control-label">密码</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="password" placeholder="密码"/>
+                                                <p id="signUp-password-error" class="notice" style="color: darkred; visibility: hidden">密码长度应在6-12位内</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="re-password" class="col-sm-2 control-label">确认密码</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="re-password" placeholder="请再次输入密码"/>
+                                                <p id="signUp-second-password-error" class="notice" style="color: darkred; visibility: hidden">请再次输入密码</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <button type="button" class="btn btn-primary btn-sm" id="signUp-btn">注册</button>
+                                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true" >取消</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main-content">
+        <div class="header">
+            <div class="logo">
+                <a href="/admin/movie/manage"><h1>NJU电影在线售票系统(管理员客户端）</h1></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="bootstrap_container">
+            <nav class="navbar navbar-default w3_megamenu" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle"><span
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a href="/admin/movie/manage" class="navbar-brand"><i class="fa fa-home"></i></a>
+                </div><!-- end navbar-header -->
+
+                <div id="defaultmenu" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/admin/movie/manage">电影管理</a></li>
+                        <li class="active"><a href="/admin/session/manage">排片管理</a></li>
+                        <li><a href="/admin/promotion/manage">活动管理</a></li>
+                        <li><a href="/admin/cinema/manage">影院管理</a></li>
+                        <li><a href="/admin/cinema/statistic">影院统计</a></li>
+                        <li><a href="/admin/vipCard/manage">会员卡</a></li>
+                        <li><a href="/admin/employee/manage">职员管理</a></li>
+                        <!-- end dropdown w3_megamenu-fw -->
+                    </ul><!-- end nav navbar-nav -->
+                </div><!-- end #navbar-collapse-1 -->
+
+            </nav><!-- end navbar navbar-default w3_megamenu -->
+        </div><!-- end container -->
+        <div class="content-container">
+            <div class="content-header">
+                <span class="title">排片管理</span>
+            </div>
+            <div class="card" style="margin:20px 0;padding:20px;">
+                <div style="display: flex;justify-content: space-between">
+                    <div>
+                        <span>选择影厅  </span>
+                        <select id="hall-select" class="form-control" style="display: inline-block;width: 180px;">
+                        </select>
+                    </div>
+                    <div>
+                        <span>选择日期  </span>
+                        <input type="date" class="form-control" id="schedule-date-input" style="display: inline-block;width: 180px;">
+                    </div>
+
+                    <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#scheduleModal">
+                        <i class="fa fa-plus"></i> 新增排片</button>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 20px">
+                <div class="schedule-date-container">
+                    <div class="schedule-date">2019/04/01</div>
+                </div>
+                <div class="schedule-container" >
+                    <ul class="schedule-time-line">
+                        <li class="schedule-time-item">00:00</li>
+                        <li class="schedule-time-item">06:00</li>
+                        <li class="schedule-time-item">12:00</li>
+                        <li class="schedule-time-item">18:00</li>
+                        <li class="schedule-time-item">24:00</li>
+                    </ul>
+                    <ul class="schedule-item-line">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width: 650px">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">新增排片</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 20px">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-movie-input"><span class="error-text">*</span>电影名称</label>
+                                <div class="col-sm-10">
+                                    <select id="schedule-movie-input" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-hall-input"><span class="error-text">*</span>放映影厅</label>
+                                <div class="col-sm-10">
+                                    <select id="schedule-hall-input" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-start-date-input"><span class="error-text">*</span>开始时间</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" class="form-control" id="schedule-start-date-input" placeholder="请选择开始时间">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-end-date-input"><span class="error-text">*</span>结束时间</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" class="form-control" id="schedule-end-date-input" placeholder="请选择结束时间">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-price-input"><span class="error-text">*</span>场次票价</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="schedule-price-input" placeholder="请输入票价">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 0">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: white;color: black;border-style: solid;border-width: 1px">
+                            取消</button>
+                        <button type="button" class="btn btn-primary" id="schedule-form-btn">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="scheduleEditModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width: 650px">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">修改排片</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 20px">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-movie-input"><span class="error-text">*</span>电影名称</label>
+                                <div class="col-sm-10">
+                                    <select id="schedule-edit-movie-input" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-hall-input"><span class="error-text">*</span>放映影厅</label>
+                                <div class="col-sm-10">
+                                    <select id="schedule-edit-hall-input" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-edit-start-date-input"><span class="error-text">*</span>开始时间</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" class="form-control" id="schedule-edit-start-date-input" placeholder="请选择开始时间">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-edit-end-date-input"><span class="error-text">*</span>结束时间</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" class="form-control" id="schedule-edit-end-date-input" placeholder="请选择结束时间">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="schedule-edit-price-input"><span class="error-text">*</span>场次票价</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="schedule-edit-price-input" placeholder="请输入票价">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 0">
+                        <button type="button" class="btn btn-primary" id="schedule-edit-remove-btn" data-dismiss="modal" style="background-color: red;color: white;">
+                            删除</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: white;color: black;border-style: solid;border-width: 1px">
+                            取消</button>
+                        <button type="button" class="btn btn-primary" id="schedule-edit-form-btn">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copy-rights text-center">
+    <p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.rg2.com/"target="_blank" title="软件工程与计算Ⅱ">软件工程与计算Ⅱ</a>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+        var defaults = {
+              containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+         };
+        */
+
+        $().UItoTop({easingType: 'easeOutQuart'});
+
+    });
+</script>
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover"style="opacity: 1;"> </span></a>
+</body>
+</html>

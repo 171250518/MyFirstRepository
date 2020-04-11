@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/index.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link rel="stylesheet" href="/css/menu.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Custom Theme files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/index.js"></script>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="My Show Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--webfont-->
+    <link href='#css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='#css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- start menu -->
+    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="/js/megamenu.js"></script>
+    <script>$(document).ready(function () {
+        $(".megamenu").megamenu();
+    });</script>
+    <script type="text/javascript" src="/js/jquery.leanModal.min.js"></script>
+    <script src="/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="/js/move-top.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+            });
+        });
+    </script>
+    <!---- start-smoth-scrolling---->
+    <script src="/js/request.js"></script>
+
+
+</head>
+<body>
+    <!-- header-section-starts -->
+    <div class="header-top-strip" id="home">
+        <div class="container">
+            <div class="header-top-right">
+                <!-- Button trigger modal  -->
+                <script>
+                    $(document).ready(function () {
+                        $('.popup-with-zoom-anim').magnificPopup({
+                            type: 'inline',
+                            fixedContentPos: false,
+                            fixedBgPos: true,
+                            overflowY: 'auto',
+                            closeBtnInside: true,
+                            preloader: false,
+                            midClick: true,
+                            removalDelay: 300,
+                            mainClass: 'my-mfp-zoom-in'
+                        });
+                    });
+                </script>
+                <!-- Large modal -->
+                <img class="avatar" id="portrait" src="/images/icon1.png" style="height: 28px; width: 28px;">
+                <button class="btn btn-primary" id="login-head" data-toggle="modal" data-target="#myModal">登录</button>
+                <button class="btn btn-primary" id="logout-head">登出</button>
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" id="modal-container">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">登录您的账号</h4>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#Login" data-toggle="tab">登录</a></li>
+                                    <li><a href="#Registration" data-toggle="tab">注册</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Login">
+                                        <form role="form" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="user-name-input" class="col-sm-2 control-label">用户名</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="user-name-input" placeholder="请输入您的用户名"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1" class="col-sm-2 control-label">密码</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入您的密码"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <button type="submit" class="btn btn-primary btn-sm" id="login-btn">登录</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane" id="Registration">
+                                        <form role="form" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="user-name-input-register" class="col-sm-2 control-label">用户名</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="user-name-input-register" placeholder="请输入用户名"/>
+                                                    <p id="signUp-name-error" class="notice" style="color: darkred; visibility: hidden">用户名长度应在4-10位内</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="col-sm-2 control-label">密码</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" id="password" placeholder="密码"/>
+                                                    <p id="signUp-password-error" class="notice" style="color: darkred; visibility: hidden">密码长度应在6-12位内</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="re-password" class="col-sm-2 control-label">确认密码</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" id="re-password" placeholder="请再次输入密码"/>
+                                                    <p id="signUp-second-password-error" class="notice" style="color: darkred; visibility: hidden">请再次输入密码</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <button type="button" class="btn btn-primary btn-sm" id="signUp-btn">注册</button>
+                                                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true" >取消</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="header">
+                <div class="logo">
+                    <a href="/index"><h1>NJU电影在线售票系统</h1></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="bootstrap_container">
+                <nav class="navbar navbar-default w3_megamenu" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle"><span
+                                class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button>
+                        <a href="/index" class="navbar-brand"><i class="fa fa-home"></i></a>
+                    </div><!-- end navbar-header -->
+
+                    <div id="defaultmenu" class="navbar-collapse collapse">
+                        <<ul class="nav navbar-nav">
+                        <li class="active"><a href="/index">主页</a></li>
+                        <!-- Mega Menu -->
+                        <li><a href="/user/movie">电影</a></li>
+                        <li><a href="/user/promotion">优惠活动</a></li>
+                        <!-- end dropdown w3_megamenu-fw -->
+                    </ul><!-- end nav navbar-nav -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown w3_megamenu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">个人中心<b
+                                    class="caret"></b></a>
+                                <ul class="dropdown-menu half3" id="dpd" role="menu">
+                                    <li><a href="/user/order">我的订单</a></li>
+                                    <li><a href="/user/profile">个人信息</a></li>
+                                    <li><a href="/user/buy">电影票</a></li>
+                                    <li><a href="/user/member">卡劵</a></li>
+                                </ul>
+                            </li><!-- end standard drop down -->
+                        </ul>
+                    </div><!-- end #navbar-collapse-1 -->
+
+                </nav><!-- end navbar navbar-default w3_megamenu -->
+            </div><!-- end container -->
+            <div class="main-banner">
+                <div class="banner col-md-9" style="margin-right: 10px;">
+                    <div class="title" style="margin-bottom: 5px">热门电影</div>
+                    <section class="slider" style="width: 80%;padding-left: 20px">
+                        <div class="flexslider">
+                            <ul class="slides" id="hot-movies">
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- FlexSlider -->
+                    <script defer src="/js/jquery.flexslider.js"></script>
+                    <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen"/>
+                    <script type="text/javascript">
+                        $(function () {
+                            SyntaxHighlighter.all();
+                        });
+                        $(window).load(function () {
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                start: function (slider) {
+                                    $('body').removeClass('loading');
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="review-slider col-md-4" style="">
+                    <div class="title" style="margin-bottom: 5px;margin-left: 15px;">我的订单</div>
+                    <div class="nbs-flexisel-container">
+                        <div class="nbs-flexisel-inner">
+                            <ul class="nbs-flexisel-ul" id="my-orders-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(window).load(function () {
+
+                            $("#my-orders-list").flexisel({
+                                visibleItems: 1.5,
+                                animationSpeed: 1000,
+                                autoPlay: true,
+                                autoPlaySpeed: 3000,
+                                pauseOnHover: true
+                            });
+                        });
+                    </script>
+                    <script type="text/javascript" src="/js/jquery.flexisel.js"></script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-rights text-center">
+        <p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.rg2.com/" target="_blank" title="软件工程与计算Ⅱ">软件工程与计算Ⅱ</a>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({easingType: 'easeOutQuart'});
+
+        });
+    </script>
+    <a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+</body>
+</html>

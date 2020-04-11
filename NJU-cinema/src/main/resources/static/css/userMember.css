@@ -1,0 +1,28 @@
+.vip-card{
+    font-size: 25px;
+    margin: 0 150px;
+    height: 430px;
+    background-image: url("../images/VIPCard.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:10px;
+}
+
+.vip-card-info{
+    padding: 20% 10% 0;
+}
+
+.card-number{
+    display: flex;
+    flex-direction: row;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+}

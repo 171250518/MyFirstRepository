@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nju.edu.cinemaSystem.data.promotion.VIPCardMapper">
+    <insert id="insertOneCard" parameterType="nju.edu.cinemaSystem.po.VIPCard"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into vip_card(user_id,balance)
+        values(#{userId}, #{balance})
+    </insert>
+
+    <insert id="insertOneChargeHist" parameterType="nju.edu.cinemaSystem.po.ChargeHist"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into charge_hist(charge, balance_befo, balance_after, date, vip_card_id)
+        values(#{charge}, #{balance_befo}, #{balance_after}, #{date}, #{vip_card_id})
+    </insert>
+
+    <insert id="insertOneConsumeHist" parameterType="nju.edu.cinemaSystem.po.ConsumeHist"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into consume_hist(consume, balance_befo, balance_after, date, vip_card_id)
+        values(#{consume}, #{balance_befo}, #{balance_after}, #{date}, #{vip_card_id})
+    </insert>
+
+    <select id="selectCardById" resultMap="VIPCard">
+        select * from vip_card where id=#{id}
+    </select>
+
+    <select id="selectCardByUserId" resultMap="VIPCard">
+        select * from vip_card where user_id=#{userId}
+    </select>
+
+    <select id="selectVIPCardInfo" resultMap="VIPCardInfo">
+        select * from vip_card_set
+    </select>
+
+    <select id="selectChargesByVIPid" resultMap="Charges">
+        select * from charge_hist where vip_card_id=#{vip_card_id}
+    </select>
+
+    <select id="selectConsumesByVIPid" resultMap="Consumes">
+        select * from consume_hist where vip_card_id=#{vip_card_id}
+    </select>
+
+    <select id="selectCharge" resultMap="Charges">
+        select * from charge_hist where id=#{id}
+    </select>
+
+    <select id="selectConsume" resultMap="Consumes">
+        select * from consume_hist where id=#{id}
+    </select>
+
+    <update id="updateVIPCardInfo">
+        update vip_card_set set price = #{price}, target=#{target}, discount=#{discount} where id=1
+    </update>
+
+    <update id="updateCardBalance" >
+        update vip_card set balance = #{balance} where id=#{id}
+    </update>
+
+    <resultMap id="VIPCard" type="nju.edu.cinemaSystem.po.VIPCard">
+        <result column="join_time" property="joinDate"></result>
+        <result column="id" property="id"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="balance" property="balance"></result>
+    </resultMap>
+
+    <resultMap id="VIPCardInfo" type="nju.edu.cinemaSystem.po.VIPCardInfo">
+        <result property="price" column="price"></result>
+        <result property="target" column="target"></result>
+        <result property="discount" column="discount"></result>
+    </resultMap>
+
+    <resultMap id="Charges" type="nju.edu.cinemaSystem.po.ChargeHist">
+        <result column="id" property="id"></result>
+        <result column="charge" property="charge"></result>
+        <result column="balance_befo" property="balance_befo"></result>
+        <result column="balance_after" property="balance_after"></result>
+        <result column="date" property="date"></result>
+        <result column="vip_card_id" property="vip_card_id"></result>
+    </resultMap>
+
+    <resultMap id="Consumes" type="nju.edu.cinemaSystem.po.ConsumeHist">
+        <result column="id" property="id"></result>
+        <result column="consume" property="consume"></result>
+        <result column="balance_befo" property="balance_befo"></result>
+        <result column="balance_after" property="balance_after"></result>
+        <result column="date" property="date"></result>
+        <result column="vip_card_id" property="vip_card_id"></result>
+    </resultMap>
+</mapper>

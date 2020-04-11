@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nju.edu.cinemaSystem.data.management.EmployeeMapper">
+    <insert id="insertOneEmployee" parameterType="nju.edu.cinemaSystem.vo.EmployeeForm"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into user(username,password,identity)
+        values(#{username}, 123456, #{identity})
+    </insert>
+
+    <select id="selectEmployeeById" resultMap="Employee">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectEmployees" resultMap="Employee">
+        select * from user where identity !=0
+    </select>
+
+    <delete id="deleteEmployeeBatch" parameterType="java.util.List">
+        delete from user where id in
+        <foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="updateEmployee" parameterType="nju.edu.cinemaSystem.vo.EmployeeForm">
+        update user set username = #{username}, identity = #{identity}
+        where id = #{id}
+    </update>
+
+    <resultMap id="Employee" type="nju.edu.cinemaSystem.po.Employee">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="identity" property="identity"></result>
+    </resultMap>
+
+</mapper>

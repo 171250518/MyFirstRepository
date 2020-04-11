@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nju.edu.cinemaSystem.data.sales.TicketMapper">
+    <insert id="insertTicket" parameterType="nju.edu.cinemaSystem.po.Ticket"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into ticket(user_id,schedule_id,column_index,row_index,state)
+        values(#{userId}, #{scheduleId},#{columnIndex},#{rowIndex},#{state})
+    </insert>
+    <insert id="insertTickets" parameterType="java.util.List"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into ticket(user_id,schedule_id,column_index,row_index,state)
+        values
+        <foreach collection="list" item="item" index="index"
+                 separator=",">
+            (#{item.userId}, #{item.scheduleId},#{item.columnIndex},#{item.rowIndex},#{item.state})
+        </foreach>
+
+    </insert>
+
+    <insert id="insertRefundPromotion" parameterType="nju.edu.cinemaSystem.po.TicketRefundPromotion"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into refund_promotion(Low,High,canOrnot,refundRate)
+        values( #{Low},#{High},#{canOrnot},#{refundRate})
+    </insert>
+
+
+    <select id="selectRefundPromotionByAmount" resultMap="TicketRefundPromotion">
+        select * from refund_promotion  where   Low &lt;= #{amount}  and #{amount} &lt; High
+    </select>
+
+    <select id="selectTicketById" resultMap="Ticket">
+        select * from ticket where id=#{id}
+    </select>
+
+    <select id="selectTicketsBySchedule" resultMap="Ticket">
+        select * from ticket where schedule_id=#{scheduleId} and state!=2
+    </select>
+
+    <select id="selectTicketByScheduleIdAndSeat" resultMap="Ticket">
+        select * from ticket where schedule_id=#{scheduleId} and column_index=#{column} and row_index=#{row} and state!=2
+    </select>
+
+    <select id="selectTicketByUser" resultMap="Ticket">
+        select * from ticket where user_id=#{userId}
+    </select>
+
+    <select id="selectAllRefundPromotion" resultMap="TicketRefundPromotion">
+        select * from refund_promotion
+    </select>
+
+    <select id="selectOrderByUserIdAndTime" resultMap="TicketWithOrder">
+                select b.movie_name,h.hallname,b.column_index,b.row_index,b.start_time,b.end_time,b.fare,b.time as order_time,b.poster_url
+        from hall h
+        inner join
+            (select m.name as movie_name,a.column_index,a.row_index,a.start_time,a.end_time,a.fare,a.hall_id,a.time,m.poster_url
+            from movie m
+            inner join
+                (select t.column_index,t.row_index,s.start_time,s.end_time,s.fare,s.movie_id,s.hall_id,t.time
+                from ticket t
+                inner join schedule s
+                on t.schedule_id=s.id
+                where t.user_id=#{userId} and t.state=1 and t.time=#{orderTime}) a
+            on m.id = a.movie_id) b
+        on h.id = b.hall_id
+        order by start_time
+    </select>
+
+
+    <select id="selectOrdersByUserId" resultMap="TicketWithOrder">
+        select b.movie_name,h.hallname,b.column_index,b.row_index,b.start_time,b.end_time,b.fare,b.time as order_time,b.poster_url
+        from hall h
+        inner join
+            (select m.name as movie_name,a.column_index,a.row_index,a.start_time,a.end_time,a.fare,a.hall_id,a.time,m.poster_url
+            from movie m
+            inner join
+                (select t.column_index,t.row_index,s.start_time,s.end_time,s.fare,s.movie_id,s.hall_id,t.time
+                from ticket t
+                inner join schedule s
+                on t.schedule_id=s.id
+                where t.user_id=#{userId} and t.state=1) a
+            on m.id = a.movie_id) b
+        on h.id = b.hall_id
+        order by start_time
+    </select>
+
+    <update id="updateTicketState">
+        update ticket set state = #{state} where id=#{ticketId}
+    </update>
+
+    <update id="updateRefundPromotion" parameterType="nju.edu.cinemaSystem.vo.TicketRefundPromotionForm">
+        update refund_promotion set Low = #{Low}, High = #{High}, refundRate = #{refundRate},
+        canOrnot = #{canOrnot}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTicket">
+        delete from ticket where id=#{ticketId}
+    </delete>
+
+    <delete id="deleteTicketByUserAndTime">
+        delete from ticket where user_id=#{userId} and time=#{time}
+    </delete>
+
+    <delete id="deleteRefundPromotion">
+        delete from refund_promotion where id=#{id}
+    </delete>
+
+    <resultMap id="Ticket" type="nju.edu.cinemaSystem.po.Ticket">
+        <result column="schedule_id" property="scheduleId"></result>
+        <result column="id" property="id"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="column_index" property="columnIndex"></result>
+        <result column="row_index" property="rowIndex"></result>
+        <result column="state" property="state"></result>
+        <result column="time" property="time"></result>
+    </resultMap>
+    <resultMap id="TicketRefundPromotion" type="nju.edu.cinemaSystem.po.TicketRefundPromotion">
+        <result column="id" property="id"></result>
+        <result column="Low" property="Low"></result>
+        <result column="High" property="High"></result>
+        <result column="canOrnot" property="canOrnot"></result>
+        <result column="refundRate" property="refundRate"></result>
+    </resultMap>
+    <resultMap id="TicketWithOrder" type="nju.edu.cinemaSystem.po.TicketWithOrder">
+        <result column="movie_name" property="movie_name"></result>
+        <result column="hallname" property="hall_name"></result>
+        <result column="column_index" property="column_index"></result>
+        <result column="row_index" property="row_index"></result>
+        <result column="start_time" property="start_time"></result>
+        <result column="end_time" property="end_time"></result>
+        <result column="fare" property="fare"></result>
+        <result column="order_time" property="order_time"></result>
+        <result column="poster_url" property="poster_url"></result>
+    </resultMap>
+
+
+
+    <update id="cleanExpiredTicket">
+        update ticket SET  state =2 WHERE minute(timediff(now(),time))>15 and state=0;
+    </update>
+
+</mapper>
